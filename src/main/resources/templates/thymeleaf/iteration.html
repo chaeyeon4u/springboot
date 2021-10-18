@@ -16,9 +16,15 @@
 	            <th class="text-center" style="width:90px">쓴날짜</th>
 	         </tr>
 	         
+	         <!-- iteration(반복) 사용
+	              반복 시작 : th:each 
+	         	  내장객체 #dates.format(board.bdate, 'yyyy.MM.dd') 
+	         	  @{} 사용시 th:href 써야한다. 보통 절대경로를 표현한다.
+	         	  -->
 	         <tr th:each="board : ${list}">
 	         	<td class="text-center">[[${board.bno}]]</td>
 	         	<!-- <td><a th:href="'iteration?bno' + ${board.bno}"></a></td> -->
+	         	<!--/* 직관적인 parameter 표현 마치 함수 */-->
 	         	<td><a th:href="@{iteration(bno=${board.bno})}">[[${board.btitle}]]</a></td>
 	         	<td class="text-center">[[${board.mid}]]</td>
 	         	<td class="text-center">[[${#dates.format(board.bdate, 'yyyy.MM.dd')}]]</td>

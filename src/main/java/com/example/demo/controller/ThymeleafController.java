@@ -98,6 +98,7 @@ public class ThymeleafController {
 		return "thymeleaf/messageExpressions";
 	}
 	
+	/*parameter를 받을 경우*/
 	@RequestMapping({"/linkUrlExpressions/{typeId}/detail", "/linkUrlExpressions/{typeId}/update"})
 	public String linkUrlExpressions(
 			@PathVariable String typeId,
@@ -109,7 +110,7 @@ public class ThymeleafController {
 		log.info("productId"+ productId);
 		log.info("pageNo"+ pageNo);
 		
-		model.addAttribute("typeId", "t2");
+		model.addAttribute("type4Id", "t2");
         model.addAttribute("productId", "p1");
         model.addAttribute("pageNo", "1");
         model.addAttribute("url1", "/thymeleaf/linkUrlExpressions/t1/detail");
@@ -117,6 +118,7 @@ public class ThymeleafController {
 		return "thymeleaf/linkUrlExpressions";
 	}
 	
+	/* request, session, application(ServletContext)범위의 데이터 저장 */
 	@RequestMapping("/builtinObject")
 	   public String builtinObject(HttpServletRequest request, HttpSession session, Model model) {
 	      log.info("실행");
@@ -137,6 +139,7 @@ public class ThymeleafController {
 	      return "thymeleaf/builtinObject";
 	   }
 	
+	/* 반복문 사용 */
 	@RequestMapping("/iteration")
 	   public String getBoards(Model model) {
 	      List<Board> list = new ArrayList<>();
@@ -153,16 +156,17 @@ public class ThymeleafController {
 	      return "thymeleaf/iteration";
 	   }
 	
-		@RequestMapping("/conditional")
-	    public String conditional(@RequestParam(defaultValue="false") boolean option, HttpSession session, Model model) {
-	      log.info("실행");
-	      if(option) {
-	         session.setAttribute("sessionMid", "thymeleaf");
-	      } else {
-	         session.removeAttribute("sessionMid");
-	      }
-	      
-	      model.addAttribute("type", "b");
-	      return "thymeleaf/conditional";
-	   }
+	/* if, else, switch의 사용 */
+	@RequestMapping("/conditional")
+    public String conditional(@RequestParam(defaultValue="false") boolean option, HttpSession session, Model model) {
+      log.info("실행");
+      if(option) {
+         session.setAttribute("sessionMid", "thymeleaf");
+      } else {
+         session.removeAttribute("sessionMid");
+      }
+      
+      model.addAttribute("type", "b");
+      return "thymeleaf/conditional";
+   }
 }
