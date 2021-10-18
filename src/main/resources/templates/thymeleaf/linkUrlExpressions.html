@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{common/layout::setContent(~{this::content})}">
+<th:block th:fragment="content">
+
+<div class="card m-2">
+	<div class="card-header">
+		linkUrlExpressions
+	</div>
+	<div class="card-body">
+		<a th:href="@{https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html}" class="btn btn-info btn-sm">Absolute</a>
+		<a th:href="@{update}" class="btn btn-info btn-sm">Page-relative</a>
+		<a th:href="@{/thymeleaf/update}" class="btn btn-info btn-sm">Context-relative(exclueded contextpath)</a>
+		<!-- Context-relative : contextPath가 존재하지 않을 때
+			Server-relative: contextPath가 존재할 때 (현재는 없음) -->
+		<a th:href="@{~/webapp/thymeleaf/update}" class="btn btn-info btn-sm">Server-relative(inclueded contextpath)</a>
+	
+		<hr/>
+		
+		<!-- ${} : Variable Expressions 
+			controller에서 온 값 받기-->
+		<a th:href="@{/thymeleaf/linkUrlExpressions/t1/detail(productId=${productId}, pageNo=${pageNo})}" class="btn btn-info btn-sm">URL Parameters</a>
+		<a th:href="@{/thymeleaf/linkUrlExpressions/{typeId}/detail(typeId=${typeId}, productId=${productId}, pageNo=${pageNo})}" class="btn btn-info btn-sm">Path Variable</a>
+		<a th:href="@{${url1}(productId=${productId}, pageNo=${pageNo})}" class="btn btn-info btn-sm">URL Insert1</a>
+		<a th:href="@{'/thymeleaf/linkUrlExpressions'+${url2}(productId=${productId}, pageNo=${pageNo})}" class="btn btn-info btn-sm">URL Insert2</a>
+	</div>
+</div>
+
+</th:block>
+</th:block>
+</html>

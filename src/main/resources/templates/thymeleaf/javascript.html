@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{common/layout::setContent(~{this::content})}">
+<th:block th:fragment="content">
+
+<div class="card m-2">
+	<div class="card-header">
+		JavaScript 코드 삽입
+	</div>
+	<div class="card-body">
+		
+		<!-- thymeleaf를 이용해서 javascript코드를 삽입하겠다 -->
+		<script th:inline="javascript">
+			//에러 아님.. javascript가 thymeleaf 문법 이해 못해서 그러는거
+			let name = [[${name}]];
+			console.log("name",name);
+			
+			let hobby = [[${hobby}]];//thymeleaf가 java 배열에서 javascript 배열로 변환해줌
+			console.log("hobby", hobby);
+			
+			//thymeleaf가 java 객체에서 javascript 객체로 변환해줌
+			let board = [[${board}]];
+			console.log("board: ", board);
+			
+			//문자열로 가져온다.
+			let jsonBoard = JSON.parse([[${jsonBoard}]]);
+			console.log("jsonBoard: ", jsonBoard);
+			
+		</script>
+		
+		<script th:inline="javascript">
+			//백틱을 사용해도 좋다!
+			//ServerSide에서 데이터 바인딩
+			name=[[${name}]];
+			//ClientSide에서 데이터 바인딩
+			let message = `Your's name is ${name}`;
+			console.log("message: ", message);
+			
+			//ClientSide에서 실행할 때 Backtick의 ${}
+			/* let data = "타임리프";
+			let message = `클라이언트 데이터 바인딩: ${data}`;//${} 타입리프에서는 충돌 안난다. jsp에서만 충돌난다.
+			console.log("message: ", message); */
+			
+			
+			
+		</script>
+	</div>
+</div>
+	
+</th:block>
+</th:block>
+</html>
