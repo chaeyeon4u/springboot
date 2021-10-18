@@ -31,11 +31,14 @@
 	         </tr>
 	     </table>
 	     
+	     <!-- th:each 는 for문! 반복문!
+	          status!
+	          status.first는 처음, status.last는 마지막, status.odd는 홀수, status.even는 짝수 -->
 	     <th:block th:each="board, status : ${list}">
          	<th:block th:if="${status.first}">
          		<table class="table table-sm table-bordered">
 			         <tr>
-			            <th class="text-center" style="width:70px">순번</th>
+			            <!-- <th class="text-center" style="width:70px">순번</th> -->
 			            <th class="text-center" style="width:70px">글번호</th>
 			            <th class="text-center">글제목</th>
 			            <th class="text-center" style="width:120px">글쓴이</th>
@@ -43,13 +46,18 @@
 			         </tr>
          	</th:block>
          	
-         	<!-- 값이 홀수일 때 -->
+         	<!-- odd 값이 홀수일 때, even 짝수
+         	     thymeleaf에는 삼항 연산자를 사용할 수 있다!!WOW 신기해.. 
+         	     ${#dates.format(변수, 'yyyy.MM.dd')} : 날짜 포멧 맞추는 내장함수!-->
          	<tr th:class="${status.odd}?'bg-light':''">
 	         	<td class="text-center">[[${board.bno}]]</td>
-	         	<!-- <td><a th:href="'iteration?bno' + ${board.bno}"></a></td> -->
-	         	<td><a th:href="@{iteration(bno=${board.bno})}"></a></td>
+	         	<!--/* 링크에 파라미터 보내는법 2가지
+	         	       첫 번째 : ''+ param 표현
+	         	       두 번째 : 괄호 속에 parm 표현 */-->
+	         	<!-- <td><a th:href="'iteration?bno=' + ${board.bno}">[[${board.bcontent}]]</a></td> -->
+	         	<td><a th:href="@{iteration(bno=${board.bno})}">[[${board.bcontent}]]</a></td>
 	         	<td class="text-center">[[${board.mid}]]</td>
-	         	<td class="text-center">[[${#dates.format(board.bdate, 'yyyy.MM.dd'}]]</td>
+	         	<td class="text-center">[[${#dates.format(board.bdate, 'yyyy.MM.dd')}]]</td>
 	         </tr>
          	
          	<th:block th:if="${status.last}">

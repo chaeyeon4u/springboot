@@ -11,8 +11,8 @@
 		<a th:href="@{https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html}" class="btn btn-info btn-sm">Absolute</a>
 		<a th:href="@{update}" class="btn btn-info btn-sm">Page-relative</a>
 		<a th:href="@{/thymeleaf/update}" class="btn btn-info btn-sm">Context-relative(exclueded contextpath)</a>
-		<!-- Context-relative : contextPath가 존재하지 않을 때
-			Server-relative: contextPath가 존재할 때 (현재는 없음) -->
+		<!-- Context-relative : contextPath 쓰지 않아도 자동포함
+			Server-relative: contextPath가 존재할 때 (현재는 없음) , webapp은 예시 컨텍스트임-->
 		<a th:href="@{~/webapp/thymeleaf/update}" class="btn btn-info btn-sm">Server-relative(inclueded contextpath)</a>
 	
 		<hr/>

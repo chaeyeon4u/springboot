@@ -23,7 +23,7 @@
 		<hr/>
 		
 		<!--/* thymeleaf의 switch문 사용..오우
-			th:switch="변수 값", th:case="조건 값", th:case="*" (default)*/-->
+			th:switch="변수 값", th:case="조건 값", th:case="*" (default)  */-->
 		<!--/* 주석2: 서버가 해석하지 않는 주석 */-->
 		<ul>
 			<th:block th:switch="${type}">
@@ -31,12 +31,14 @@
 					<li>type-a-1</li>
 					<li>type-a-2</li>
 				</th:block>
-				<!--/* 주석3 : 에디터는 주석처리 안하지만 thymeleaf는 주석으로 처리-->
+				<!--/* 주석3 시작 : 에디터는 주석처리 안하지만 thymeleaf는 주석으로 처리-->
 				<th:block th:case="b">
 					<li>type-b-1</li>
 					<li>type-b-2</li>
 				</th:block>
-				<!--/* default */-->
+				<!--/* 주석3 끝 */-->
+				
+				<!--/* default  */-->
 				<th:block th:case="*">
 					<li>type-1</li>
 					<li>type-2</li>
