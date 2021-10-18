@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <!-- MyBatis 전체 설정 -->
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.example.demo.dto.Member" alias="member"></typeAlias>
+		<typeAlias type="com.example.demo.dto.Board" alias="board"></typeAlias>
+		<typeAlias type="com.example.demo.dto.Pager" alias="pager"></typeAlias>
+ 	</typeAliases>
+</configuration>
