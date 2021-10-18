@@ -14,6 +14,10 @@
                   <th class="text-center" style="width: 120px">글쓴이</th>
                   <th class="text-center" style="width: 90px">쓴날짜</th>
                </tr>
+               <!-- thymeleaf 의 반복문(th:each)
+                    status.odd : 홀수
+                    status.even : 짝수
+                    [[${}]] : 인라인 변수사용, javascript에서도 이렇게 사용 -->
                <tr th:each="board, status : ${boards}" th:class="${status.odd}?'bg-light':''">
                   <td class="text-center">[[${board.bno}]]</td>
                   <td><a th:href="@{boardDetail(bno=${board.bno})}">[[${board.btitle}]]</a></td>
@@ -24,6 +28,10 @@
                   <td colspan="4" class="text-center">
                      <div>
                         <a href="boardList?pageNo=1" class="btn btn-outline-primary btn-sm">처음</a>
+                        <!-- th:if문 사용!
+                             th:href : @{}는 linkUrlExpression, 
+                               parameter 표현법 1번 : '문자열'+${변수값} ex) @{'boardList?pageNo='+${pager.startPageNo-1}}
+                               parameter 표현법 2번 : 링크(면수=${변수값})  -->
                         <a th:if="${pager.groupNo>1}" th:href="@{boardList(pageNo=${pager.startPageNo-1})}" class="btn btn-outline-primary btn-sm">이전</a>
                         
                         <th:block th:each="i : ${#numbers.sequence(pager.startPageNo, pager.endPageNo)}">
